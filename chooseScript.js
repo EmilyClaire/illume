@@ -7,11 +7,12 @@ window.onload = function() {
     if (user) {
         userName = user.uid;
         var query = firebase.database().ref("chat").orderByKey();
-        query.once("child_added")
-        .then(function(snapshot) {
+        query.on("child_added", function(snapshot) {
+            
+            console.log("snapshot - " + snapshot);
         snapshot.forEach(function(childSnapshot) {
       // key will be "ada" the first time and "alan" the second time
-            console.log(user);
+            console.log(user.uid);
       var key = childSnapshot.key;
         var childData = childSnapshot.val();
             console.log("name - " + childData["name"]);
