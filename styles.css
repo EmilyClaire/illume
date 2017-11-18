@@ -26,6 +26,13 @@ h2 {
     text-align: center;
 }
 
+h3{
+   font-family: bree-serif;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
 .navbar {
     font-family: bree-serif;
     font-size: 20px;
@@ -45,6 +52,10 @@ h2 {
     text-decoration: none;
     color: white;
     
+}
+
+.about{
+    padding-top: 30px;
 }
 a {
     text-decoration: none;
