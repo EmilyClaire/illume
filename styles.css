@@ -102,3 +102,15 @@ a:hover {
     padding-bottom: 50px;
     opacity: 0.7;
 }
+
+
+#person1, #person2, #person3 {
+    height: 400px;
+    width: 400px;
+    margin-top: 40px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 1%;
+    background-color: black;
+}
+
