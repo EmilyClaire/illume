@@ -1,0 +1,63 @@
+html {
+    background-image: url(LAGUTTa.png);
+    background-size: cover;
+}
+
+
+h1 {
+    text-align: center;
+    color: white;
+    font-family: bree-serif;
+    letter-spacing: 5px;
+    font-size: 40px;
+    margin-top: 200px;
+}
+
+p {
+    text-align: center;
+    color: white;
+    font-family: bree-serif;
+}
+
+h2 {
+    font-family: bree-serif;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+
+.navbar {
+    font-family: bree-serif;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    padding-right: 40px;
+    margin-left: 17%;
+}
+
+.element {
+    margin-top: -30px;
+}
+
+.button {
+    border: solid white;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    
+}
+a {
+    text-decoration: none;
+    color: white;
+    transition:color .5s;
+
+}
+
+a:hover {
+    color: #991a3b;
+}
+
+#main_buttton {
+    text-decoration: none;
+    color: white;
+}
