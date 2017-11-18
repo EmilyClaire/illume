@@ -3,8 +3,17 @@
     background-size: cover;
 }
 
-#about #mission, #work{
-    background-color: black;
+#about{
+    background-image; url(Time_Square_about.jpg);
+    background-size: cover; 
+} 
+#mission{
+    background-image; url(Shibuya_mission.jpg);
+    background-size: cover; 
+} 
+#work{
+    background-image: url(dubai_work.jpg);
+    background-size: cover; 
 }
 
 h1 {
