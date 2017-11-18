@@ -1,0 +1,125 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Chat</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+  <script src="/__/firebase/4.6.2/firebase-app.js"></script>
+  <script src="/__/firebase/4.6.2/firebase-auth.js"></script>
+  <script src="/__/firebase/4.6.2/firebase-database.js"></script>
+  <script src="/__/firebase/4.6.2/firebase-messaging.js"></script>
+  <script src="/__/firebase/init.js"></script>
+
+    <style>
+    body {
+      font-family: 'HelveticaNeue-Light';
+    }
+    .msg {
+      margin: 10px 0;
+      padding: 10px;
+      width: 400px;
+      background-color: #efefef;
+    }
+    #username, #text {
+      margin: 5px 0px;
+    }
+    #post {
+      padding: 0.5em 1em;
+      background-color: #50b1ff;
+      border: none;
+      color: #FFF;
+    }
+        
+    #login {
+      padding: 0.5em 1em;
+      background-color: #DD4B39;
+      border: none;
+      color: #FFF;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="login">Login with Google</button><br/>
+  <input id="text" type="text" placeholder="Message"><br/>
+  <button id="post">Post</button><br/>
+  <div id="results"></div>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyANk2GDrj2bfnEGYmRmYX1Bwshf34Ch7w4",
+    authDomain: "illume-186200.firebaseapp.com",
+    databaseURL: "https://illume-186200.firebaseio.com",
+    projectId: "illume-186200",
+    storageBucket: "illume-186200.appspot.com",
+    messagingSenderId: "931060639653"
+  };
+
+firebase.initializeApp(config);
+
+var rootRef = firebase.database().ref();
+    var textInput = document.querySelector('#text');
+    var postButton = document.querySelector('#post');
+    
+      // ADD THESE 4 LINES
+    var username = null;
+    var loginButton = document.querySelector('#login');
+    postButton.style.display = "none";
+    textInput.style.display = "none";
+
+    postButton.addEventListener("click", function() {
+       var msgUser = username;
+      var msgText = textInput.value;
+      
+        myFirebase.push({username:msgUser, text:msgText});
+      textInput.value = "";
+    });
+    
+     /** Function to add a data listener **/
+    var startListening = function() {
+      myFirebase.on('child_added', function(snapshot) {
+        var msg = snapshot.val();
+      
+        var msgUsernameElement = document.createElement("b");
+        msgUsernameElement.textContent = msg.username;
+        
+        var msgTextElement = document.createElement("p");
+        msgTextElement.textContent = msg.text;
+  
+        var msgElement = document.createElement("div");
+        msgElement.appendChild(msgUsernameElement);
+        msgElement.appendChild(msgTextElement);
+
+          // ADD THIS LINE
+        msgElement.className = "msg";
+        document.getElementById("results").appendChild(msgElement);
+      });
+    }
+    
+      loginButton.addEventListener("click", function() {
+          var auth = firebase.auth();
+
+          var provider = new firebase.auth.GoogleAuthProvider();
+          auth.signInWithPopup(provider).then(function(result) {
+        // User signed in!
+        username = result.user.uid;
+        loginButton.textContent = "Logged in as " + username;
+        loginButton.disabled = true;
+        postButton.style.display = "block";
+        textInput.style.display = "block";
+
+        // Start listening for data, remove previous calls to this method
+        startListening();
+
+          }).catch(function(error) {
+    // An error occurred
+          }), {remember: "none"}); // will end authentication on page close/reload
+    });
+    
+
+    
+</script>
+</body>
+</html>
