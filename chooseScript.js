@@ -21,6 +21,9 @@ window.onload = function() {
 
 		var companionName = document.getElementById("companion");
 		companionName.textContent = companion;
+                
+        var companionDesc = document.getElementById("person2").getElementsByClassName("desc")[0];
+        companionDesc.textContent = demographic;    
             }
   });
 });
