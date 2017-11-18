@@ -5,17 +5,19 @@ window.onload = function() {
     var userName = null;
     
     if (user) {
-        userName = user.G;
+        userName = user.uid;
         var query = firebase.database().ref("chat").orderByKey();
         query.once("child_added")
         .then(function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
       // key will be "ada" the first time and "alan" the second time
+            console.log(user);
       var key = childSnapshot.key;
         var childData = childSnapshot.val();
-    
-            if(childData[name] !== userName){
+            console.log("name - " + childData["name"]);
+            if(childData["name"] !== userName){
                 companion = childData["name"];
+                console.log(childData);
                 demographic = childData["demographics"];
 		console.log(companion);
 
