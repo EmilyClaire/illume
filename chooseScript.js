@@ -7,23 +7,26 @@ window.onload = function() {
     if (user) {
         userName = user.G;
         var query = firebase.database().ref("chat").orderByKey();
-        query.once("value")
+        query.once("child_added")
         .then(function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
       // key will be "ada" the first time and "alan" the second time
       var key = childSnapshot.key;
         var childData = childSnapshot.val();
     
-            if(childData.username !== userName){
-                companion = childData.username;
-                demographic = childData.demographics;
+            if(childData[name] !== userName){
+                companion = childData["name"];
+                demographic = childData["demographics"];
+		console.log(companion);
+
+		var companionName = document.getElementById("companion");
+		companionName.textContent = companion;
             }
   });
 });
     
-    console.log(companion + " " + demographic);
     }
     else {
-        
+	console.log("No one logged in");        
     }
 }
