@@ -30,10 +30,12 @@ var postButton = document.querySelector('#post');
         var msg = snapshot.val();
   var msgUsernameElement = document.createElement("b");
         msgUsernameElement.textContent = msg.username;
-
+        
+        msgUsernameElement.className = "userNameText";
+        
         var msgTextElement = document.createElement("p");
         msgTextElement.textContent = msg.text;
-
+        
         var msgElement = document.createElement("div");
         msgElement.appendChild(msgUsernameElement);
         msgElement.appendChild(msgTextElement);
