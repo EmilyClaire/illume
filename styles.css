@@ -1,8 +1,11 @@
-html {
+#main {
     background-image: url(LAGUTTa.png);
     background-size: cover;
 }
 
+#about #mission, #work{
+    background-color: black;
+}
 
 h1 {
     text-align: center;
